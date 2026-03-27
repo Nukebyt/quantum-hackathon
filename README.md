@@ -296,16 +296,27 @@ It highlights the potential of quantum computing in **intelligent decision-makin
 
 ---
 
-## 📌 Level 2: Quantum State Analysis using QuTiP
+## 📌 Level 3: Quantum State Analysis using QuTiP
+## 🧠 Problem Statement
+
+Two students prepare the following qubit states:
+
+ψ₁ = (|0⟩ + |1⟩) / √2  
+ψ₂ = (|0⟩ − |1⟩) / √2  
+
+They claim:
+
+- "Both states look similar on the Bloch Sphere!"
+
+Your task is to **verify, visualize, and explain this claim using QuTiP.**
 
 ## 🧠 Overview
 
 This project analyzes two quantum states:
 
-[
-|\psi_1\rangle = \frac{|0\rangle + |1\rangle}{\sqrt{2}}, \quad
-|\psi_2\rangle = \frac{|0\rangle - |1\rangle}{\sqrt{2}}
-]
+
+ψ₁ = (|0⟩ + |1⟩) / √2  
+ψ₂ = (|0⟩ − |1⟩) / √2 
 
 The goal is to determine whether these states are **similar or different** using:
 
