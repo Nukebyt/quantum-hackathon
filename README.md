@@ -293,3 +293,216 @@ It highlights the potential of quantum computing in **intelligent decision-makin
 
 ---
 
+
+---
+
+## 📌 Level 2: Quantum State Analysis using QuTiP
+
+## 🧠 Overview
+
+This project analyzes two quantum states:
+
+[
+|\psi_1\rangle = \frac{|0\rangle + |1\rangle}{\sqrt{2}}, \quad
+|\psi_2\rangle = \frac{|0\rangle - |1\rangle}{\sqrt{2}}
+]
+
+The goal is to determine whether these states are **similar or different** using:
+
+* Mathematical verification
+* Bloch sphere representation
+* Physical interpretation
+
+The implementation is done using **QuTiP** in Google Colab.
+
+---
+
+## 🎯 Objectives
+
+* Represent quantum states programmatically
+* Compute inner product to check similarity
+* Extract Bloch sphere coordinates
+* Visualize states on the Bloch sphere
+* Provide physical interpretation
+
+---
+
+## ⚙️ Technologies Used
+
+* Python
+* NumPy
+* QuTiP (Quantum Toolbox in Python)
+* Google Colab
+
+---
+
+## 📂 Code Explanation
+
+### 🔹 1. Define Basis States
+
+```python
+zero = basis(2, 0)
+one = basis(2, 1)
+```
+
+* Creates standard quantum states:
+
+  * (|0\rangle = [1, 0]^T)
+  * (|1\rangle = [0, 1]^T)
+
+---
+
+### 🔹 2. Define Given States
+
+```python
+psi1 = (zero + one).unit()
+psi2 = (zero - one).unit()
+```
+
+* Creates normalized superposition states:
+
+  * ( |\psi_1\rangle = |+\rangle )
+  * ( |\psi_2\rangle = |-\rangle )
+
+---
+
+### 🔹 3. Verification using Inner Product
+
+```python
+overlap = psi1.dag() * psi2
+```
+
+* Computes:
+  [
+  \langle \psi_1 | \psi_2 \rangle
+  ]
+
+### ✅ Result:
+
+```
+0
+```
+
+### 🔥 Interpretation:
+
+* Inner product = 0 → states are **orthogonal**
+* Therefore → **completely different**
+
+---
+
+### 🔹 4. Bloch Sphere Coordinates
+
+```python
+x1 = (psi1.dag() * sigmax() * psi1).real
+y1 = (psi1.dag() * sigmay() * psi1).real
+z1 = (psi1.dag() * sigmaz() * psi1).real
+```
+
+* Computes expectation values of Pauli matrices:
+
+  * ( \sigma_x, \sigma_y, \sigma_z )
+
+### 📊 Results:
+
+| State      | (x, y, z)  |
+| ---------- | ---------- |
+| ( \psi_1 ) | (1, 0, 0)  |
+| ( \psi_2 ) | (-1, 0, 0) |
+
+---
+
+### 🔹 5. Visualization
+
+```python
+b = Bloch()
+b.add_states(psi1)
+b.add_states(psi2)
+b.show()
+```
+
+* Displays both states on Bloch sphere:
+
+  * 🔴 ( \psi_1 ) → +X direction
+  * 🔵 ( \psi_2 ) → −X direction
+
+---
+
+## 🧠 Key Concepts
+
+### 🔸 Inner Product
+
+Measures similarity between quantum states.
+
+* ( = 1 ) → identical
+* ( = 0 ) → orthogonal (completely different)
+
+---
+
+### 🔸 Orthogonality
+
+Two states are orthogonal if:
+
+[
+\langle \psi_1 | \psi_2 \rangle = 0
+]
+
+👉 Meaning:
+
+* No overlap
+* Perfectly distinguishable
+
+---
+
+### 🔸 Bloch Sphere Insight
+
+* Both states lie on **equator** (z = 0)
+* But:
+
+  * ( \psi_1 ) → +X axis
+  * ( \psi_2 ) → −X axis
+
+👉 They are **opposite points**
+
+---
+
+## 🔥 Final Conclusion
+
+Although both states have equal probability amplitudes (50% for (|0\rangle) and (|1\rangle)), they differ by a **relative phase of π**.
+
+This results in:
+
+* Orthogonality (inner product = 0)
+* Opposite directions on Bloch sphere
+* Different measurement behavior
+
+👉 Therefore:
+
+> The two states are fundamentally different quantum states.
+
+---
+
+## 🚀 How to Run
+
+1. Open in Google Colab
+2. Install dependencies:
+
+```bash
+pip install qutip
+```
+
+3. Run all cells
+
+---
+
+## 📌 Learning Outcome
+
+This project demonstrates that:
+
+* Quantum states are not defined only by probabilities
+* **Phase plays a critical role**
+* Visualization + math together give full understanding
+
+---
+
+
+
