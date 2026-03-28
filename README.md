@@ -123,11 +123,11 @@ This project focuses on **conceptual understanding and implementation of reversi
 ### 🧠 Problem Statement
 
 In a smart city environment, multiple sensors continuously monitor critical emergency conditions such as:
-
+*  Medical Emergency
 *  Fire Detection
 *  Gas Leakage
 *  Intrusion Detection
-*  Medical Emergency
+
 
 Due to **limited communication bandwidth**, only **one signal can be transmitted at a time** to the central control unit.
 
@@ -148,18 +148,18 @@ A priority-based combinational logic was implemented where:
 
 | Priority | Signal         |
 | -------- | -------------- |
-| Highest  | Fire (s3)      |
-| High     | Gas (s2)       |
-| Medium   | Intrusion (s1) |
-| Low      | Medical (s0)   |
+| Highest  | Medical(s3)      |
+| High     | Fire (s2)       |
+| Medium   | Gas (s1) |
+| Low      | Intrusion (s0)   |
 
 ### Logic:
 
 ```text
-If Fire → select Fire  
-Else if Gas → select Gas  
-Else if Intrusion → select Intrusion  
-Else if Medical → select Medical  
+If Medical → select Medical  
+Else if Fire → select Fire  
+Else if Gas → select Gas
+Else if Intrusion → select Intrusion 
 Else → No signal
 ```
 
@@ -177,10 +177,10 @@ To extend the idea into quantum computing, we designed a **reversible priority M
 
 | Qubit | Signal         |
 | ----- | -------------- |
-| q0    | Medical (s0)   |
-| q1    | Intrusion (s1) |
-| q2    | Gas (s2)       |
-| q3    | Fire (s3)      |
+| q0    | Intrusion (s0)   |
+| q1    | Gas (s1) |
+| q2    | Fire (s2)       |
+| q3    | Medical (s3)      |
 | q4    | Output         |
 
 ---
@@ -199,22 +199,22 @@ The circuit uses:
 
 The logic is encoded as follows:
 
-1. **Fire (Highest Priority)**
+1. **Medical (Highest Priority)**
 
    * Directly sets output if active
    * `CX(q3 → q4)`
 
-2. **Gas (Second Priority)**
+2. **Fire (Second Priority)**
 
    * Activated only if Fire = 0
    * Uses inverted Fire + Toffoli gate
 
-3. **Intrusion (Third Priority)**
+3. **Gas (Third Priority)**
 
    * Activated only if Fire = 0 AND Gas = 0
    * Uses multi-controlled gate
 
-4. **Medical (Lowest Priority)**
+4. **Intrusion(Lowest Priority)**
 
    * Activated only if all higher signals are 0
    * Uses 4-controlled gate
