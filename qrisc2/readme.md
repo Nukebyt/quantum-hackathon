@@ -117,6 +117,8 @@ Example Results:
 Emergency overrides all signals
 Fire dominates Gas/Intrusion
 Noise affects reliability
+
+
 📁 Project Structure
 qrisc2/
 │
@@ -148,6 +150,8 @@ qrisc2/
 │   └── test_emergency.py
 │
 └── README.md
+
+
 ▶️ How to Run
 1. Setup Environment
 pip install qiskit qiskit-aer matplotlib
@@ -192,6 +196,5 @@ Quantum computing
 Compiler design
 👨‍💻 Author
 
-[Your Name]
+Priyanuj Boruah 
 Electronics Engineering Student
-Focused on Quantum Computing & Processor Desi
